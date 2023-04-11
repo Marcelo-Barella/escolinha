@@ -35,5 +35,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/colaboradores', [App\Http\Controllers\ColaboradoresController::class, 'index']);
 
+Route::delete('/colaboradores/{id}',[App\Http\Controllers\ColaboradoresController::class, 'deletar_colaborador'])->name('deletar_colaborador');
+
+Route::put('/colaboradores/{id}',[App\Http\Controllers\ColaboradoresController::class, 'atualizar_colaborador'])->name('atualizar_colaborador');
+
 // Route::get('/colaboradores', 'ColaboradoresController@index')->name('Colaboradores.index');
 
