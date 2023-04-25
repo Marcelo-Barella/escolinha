@@ -11,8 +11,14 @@ use Faker\Factory as Faker;
 class UsersTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * A função run é uma função é executada quando você executa o comando php artisan db:seed. 
+     * Nesse caso, a função cria 10 usuários falsos no banco de dados usando o pacote Faker para gerar nomes e endereços de email aleatórios.
+     * O hash da senha “senha123” é gerado usando a função bcrypt. 
+     * Função insere os usuários falsos no banco de dados usando o método insert do Query Builder
+     * Comando para executar a função no terminal : 
+     * php artisan db:seed --class=UsersTableSeeder
      */
+    
     public function run(): void
     {
         $password = bcrypt('senha123');

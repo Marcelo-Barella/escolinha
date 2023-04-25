@@ -14,17 +14,17 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (isset($users))  {{-- Caso não encontre nenhum usuário --}}
+                    @if (isset($users))  {{-- Caso não encontre nenhum usuário --}}
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>                            
                                 @foreach ($users as $user)
                                 <tr>
                                     <th scope="row">{{ $user->id }}</th>
@@ -67,55 +67,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
-                            @endif
-                        </tbody>
-                    </table>
+                                @endforeach                               
+                            </tbody>                   
+                        </table>
+                        {{ $users->links('pagination::bootstrap-4') }} 
+                    @endif   
                 </div>
             </div>
         </div>
     </div>
-
 
 </div>
 
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/colaboradores.js') }}"></script>
-{{-- A função asset() é uma função do Laravel que gera uma URL completa para um arquivo localizado em sua pasta public --}}
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
-{{-- <script>
-    function deleteUser(id, name) {
-        Swal.fire({
-            title: 'Tem certeza?',
-            text: `Você está prestes a excluir o usuário ${name}.`,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sim, excluir',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios.delete(`/users/${id}`)
-                    .then(() => {
-                        Swal.fire(
-                            'Excluído!',
-                            'O usuário foi excluído com sucesso.',
-                            'success'
-                        ).then(() => {
-                            location.reload();
-                        });
-                    })
-                    .catch(() => {
-                        Swal.fire(
-                            'Erro!',
-                            'Não foi possível excluir o usuário.',
-                            'error'
-                        );
-                    });
-            }
-        });
-    }
-</script> --}}
+    {{-- A função asset() é uma função do Laravel que gera uma URL completa para um arquivo localizado em sua pasta public --}}
+    <script src="{{ asset('js/colaboradores.js') }}"></script>
 @endsection
