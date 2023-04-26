@@ -2,66 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Colaboradores;
+use App\Models\Usuarios;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
-class ColaboradoresController extends Controller
+class UsuariosController extends Controller
 {
     public function index()
     {
+
         // DESCRIÇÃO: Usado para listar todas as colunas da tabela users
 
-        // $users = Colaboradores::all();
-        // return view('base.colaboradores', ['users' => $users]);
+        // $users = Usuarios::all();
+        // return view('base.usuarios', ['users' => $users]);
 
-        // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
+        // DESCRIÇÃO: Usado para criar paginação na View Usuarios.
 
         $itensPaginas = 8; // número de itens por página
-        $users = Colaboradores::paginate($itensPaginas);
+        $users = Usuarios::paginate($itensPaginas);
 
-        return view('base.colaboradores', ['users' => $users]);
+        return view('base.usuarios', ['users' => $users]);
     }
 
-    public function deletar_colaborador($id)
+    public function deletar_usuario($id)
     {
         // DESCRIÇÃO: Busca o ID do usuário para realizar a exclusão do registro
         // Quando encontrado, exclui o registro no banco de dados.
-        $user = Colaboradores::find($id);
+        $user = Usuarios::find($id);
 
         if ($user) {
             $user->delete();
-            return view('base.colaboradores')->with('success', 'Usuário excluído com sucesso!');
+            return view('base.usuarios')->with('success', 'Usuário excluído com sucesso!');
         } else {
-            return view('base.colaboradores')->with('error', 'Usuário não encontrado.');
+            return view('base.usuarios')->with('error', 'Usuário não encontrado.');
         }
     }
 
-    public function atualizar_colaborador($id, Request $request)
+    public function atualizar_usuario($id, Request $request)
     {
         //A função updateUser é uma função que atualiza os dados do usuário no banco de dados. 
-        //$user = new Colaboradores; cria um novo objeto da classe Colaboradores.
+        //$user = new Usuarios; cria um novo objeto da classe Usuarios.
         //$user->updateUser($id, $request->name, $request->email); chama a função updateUser do objeto $user, 
         //passando os parâmetros $id, $request->name e $request->email. 
         //Essa função atualiza o nome e o email do usuário com o $id. 
-        //return redirect('/colaboradores'); redireciona o usuário para a página /colaboradores.
+        //return redirect('/usuarios'); redireciona o usuário para a página /usuarios.
 
-        $user = new Colaboradores;
+        $user = new Usuarios;
         $user->updateUser($id, $request->name, $request->email);
-        return redirect('/colaboradores');
+        return redirect('/usuarios');
         
         // SEM MODEL
 
-        // $user = Colaboradores::find($id);
+        // $user = Usuarios::find($id);
         // $user->name = $request->input('name');
         // $user->email = $request->input('email');
         // $user->save();
         
-        // return view('colaboradores')->with('success', 'Usuário Atualizado com sucesso!');
+        // return view('usuarios')->with('success', 'Usuário Atualizado com sucesso!');
 
         // UPDATE COM JSON
 
-        // $user = Colaboradores::find($id);
+        // $user = Usuarios::find($id);
         // if (!$user) {
         //     return response()->json([
         //         'success' => false,

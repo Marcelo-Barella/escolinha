@@ -69,7 +69,13 @@
 
                             @if (Route::has('usuarios'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('usuarios') }}">{{ __('Clientes') }}</a>                             
+                                    <a class="nav-link" href="{{ route('usuarios') }}">{{ __('Usuários') }}</a>                             
+                                </li>
+                            @endif
+
+                            @if (Route::has('pessoas'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('pessoas') }}">{{ __('Pessoas') }}</a>                             
                                 </li>
                             @endif
                             

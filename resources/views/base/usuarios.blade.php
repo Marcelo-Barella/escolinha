@@ -47,7 +47,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ url('/colaboradores/'.$user->id) }}">
+                                                <form method="POST" action="{{ url('/usuarios/'.$user->id) }}">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
@@ -60,7 +60,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" id="atualizar_colaborador" class="btn btn-primary">Atualizar</button>
+                                                        <button type="submit" id="atualizar_usuario" class="btn btn-primary">Atualizar</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -83,5 +83,5 @@
 
 @section('scripts')
     {{-- A função asset() é uma função do Laravel que gera uma URL completa para um arquivo localizado em sua pasta public --}}
-    <script src="{{ asset('js/colaboradores.js') }}"></script>
+    <script src="{{ asset('js/usuarios.js') }}"></script>
 @endsection
