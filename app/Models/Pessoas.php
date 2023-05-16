@@ -15,15 +15,27 @@ class Pessoas extends Model
     //$pessoa->email = $email; atualiza o email do usuário para $email,
     //$pessoa->save(); salva as alterações no banco de dados.
 
-    public function updatePessoa($id, $nome, $contato, $telefone, $endereco, $sexo, $grupo)
+    public function updatePessoa($id, $cpf, $nome, $telefone, $endereco, $sexo, $grupo)
     {
         $pessoa = Pessoas::find($id);
-        $pessoa->NOME = $nome;
-        $pessoa->CONTATO = $contato;
-        $pessoa->TELEFONE = $telefone;
-        $pessoa->ENDERECO = $endereco;
-        $pessoa->SEXO = $sexo;
-        $pessoa->GRUPO = $grupo;
+        $pessoa->cpf = $cpf;
+        $pessoa->nome = $nome;
+        $pessoa->telefone = $telefone;
+        $pessoa->endereco = $endereco;
+        $pessoa->sexo = $sexo;
+        $pessoa->grupo = $grupo;
+        $pessoa->save();
+    }
+
+    public function insertPessoa($id, $cpf, $nome, $telefone)
+    {
+        $pessoa = Pessoas::find($id);
+        $pessoa->cpf = $cpf;
+        $pessoa->nome = $nome;
+        $pessoa->telefone = $telefone;
+        $pessoa->endereco = $endereco;
+        $pessoa->sexo = $sexo;
+        $pessoa->grupo = $grupo;
         $pessoa->save();
     }
 

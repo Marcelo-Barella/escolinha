@@ -47,7 +47,8 @@ class PessoasController extends Controller
         //return redirect('/pessoas'); redireciona o usuário para a página /pessoas.
 
         $pessoa = new Pessoas;
-        $pessoa->updatePessoa($id, $request->nome, $request->email);
+        $pessoa->updatePessoa(
+            $id, $request->nome, $request->$telefone, $request->endereco, $request->sexo, $request->grupo);
         return redirect('/pessoas');
         
         // SEM MODEL
@@ -77,5 +78,20 @@ class PessoasController extends Controller
         //     'success' => true,
         //     'message' => 'Pessoas atualizado com sucesso'
         // ]);
+    }
+
+    public function inserir_pessoa(Request $request){
+        $validar = $request->validate([
+            'cpf' => 'required',
+            'telefone' => 'required',
+            'endereco' => 'required',
+            'nome' => 'required',
+            'sexo' => 'required',
+            'grupo' => 'required'
+        ]);
+        Pessoas::create($validar);
+        
+
+        return redirect('/pessoas');
     }
 }

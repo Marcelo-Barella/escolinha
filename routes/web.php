@@ -45,11 +45,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Essa rota pode ser modificada de acordo com as necessidades, incluindo alterações no método HTTP utilizado, na URL e no controlador associado.
 */
 
-Route::get('/pessoas', [App\Http\Controllers\PessoasController::class, 'index']);
+Route::get('/pessoas', [App\Http\Controllers\PessoaController::class, 'index']);
 
-Route::delete('/pessoas/{CPF}',[App\Http\Controllers\PessoasController::class, 'deletar_pessoa'])->name('deletar_pessoa');
+Route::delete('/pessoas/{id}',[App\Http\Controllers\PessoaController::class, 'deletar_pessoa'])->name('deletar_pessoa');
 
-Route::put('/pessoas/{CPF}',[App\Http\Controllers\PessoasController::class, 'atualizar_pessoa'])->name('atualizar_pessoa');
+Route::put('/pessoas/{id}',[App\Http\Controllers\PessoaController::class, 'atualizar_pessoa'])->name('atualizar_pessoa');
+
+Route::post('/pessoas',[App\Http\Controllers\PessoaController::class, 'inserir_pessoa'])->name('inserir_pessoa');
+
 
 
 Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index']);

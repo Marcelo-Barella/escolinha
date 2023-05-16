@@ -20,6 +20,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
+                                    <th scope="col">Id</th>
                                     <th scope="col">CPF</th>
                                     <th scope="col">Nome</th>
                                     <th scope="col">Endereço</th>
@@ -32,44 +33,49 @@
                             <tbody>                            
                                 @foreach ($pessoas as $pessoa)
                                 <tr>
-                                    <th scope="row">{{ $pessoa->CPF }}</th>
-                                    <td>{{ $pessoa->NOME }}</td>
-                                    <td>{{ $pessoa->ENDERECO }}</td>
-                                    <td>{{ $pessoa->SEXO }}</td>
-                                    <td>{{ $pessoa->TELEFONE }}</td>
-                                    <td>{{ $pessoa->CONTATO }}</td>
-                                    <td>{{ $pessoa->GRUPO }}</td>
+                                    <th scope="row">{{ $pessoa->id }}</th>
+                                    <td>{{ $pessoa->cpf }}</td>
+                                    <td>{{ $pessoa->nome }}</td>
+                                    <td>{{ $pessoa->endereco }}</td>
+                                    <td>{{ $pessoa->sexo }}</td>
+                                    <td>{{ $pessoa->telefone }}</td>
+                                    <td>{{ $pessoa->contato }}</td>
+                                    <td>{{ $pessoa->grupo }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updatePessoaModal{{ $pessoa->CPF }}">
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updatePessoaModal{{ $pessoa->id }}">
                                             Editar
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePessoa({{ $pessoa->CPF }}, '{{ $pessoa->NOME }}')">Excluir</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePessoa({{ $pessoa->id }}, {{ $pessoa->nome }})">Excluir</button>
                                     </td>
                                 </tr>
-                                <div class="modal fade" id="updatePessoaModal{{ $pessoa->CPF }}" tabindex="-1" role="dialog" aria-labelledby="updatePessoaModalLabel{{ $pessoa->CPF }}" aria-hidden="true">
+                                <div class="modal fade" id="updatePessoaModal{{ $pessoa->id }}" tabindex="-1" role="dialog" aria-labelledby="updatePessoaModalLabel{{ $pessoa->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="updatePessoaModalLabel{{ $pessoa->CPF }}">Atualizar Usuário</h5>
+                                                <h5 class="modal-title" id="updatePessoaModalLabel{{ $pessoa->id }}">Atualizar Usuário</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ url('/pessoas/'.$pessoa->CPF) }}">
+                                                <form method="POST" action="{{ url('/pessoas/'.$pessoa->id) }}">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
+                                                        <label for="name">CPF:</label>
+                                                        <input type="text" class="form-control" name="name" value="{{ $pessoa->cpf }}" required autofocus>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="name">Nome:</label>
-                                                        <input type="text" class="form-control" name="name" value="{{ $pessoa->NOME }}" required autofocus>
+                                                        <input type="text" class="form-control" name="name" value="{{ $pessoa->nome }}" required autofocus>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="endereco">Endereço:</label>
-                                                        <input type="text" class="form-control" name="endereco" value="{{ $pessoa->ENDERECO }}" required>
+                                                        <input type="text" class="form-control" name="endereco" value="{{ $pessoa->endereco }}" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="telefone">Telefone:</label>
-                                                        <input type="text" class="form-control" name="telefone" value="{{ $pessoa->TELEFONE }}" required>
+                                                        <input type="text" class="form-control" name="telefone" value="{{ $pessoa->telefone }}" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -95,9 +101,9 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ url('/pessoas/'.$pessoa->CPF) }}">
+                                                <form method="POST" action="{{ url('/pessoas') }}">
                                                     @csrf
-                                                    @method('PUT')
+                                                    @method('POST')
                                                     <div class="form-group">
                                                         <label for="name">CPF:</label>
                                                         <input type="number" class="form-control" name="cpf" value="" required autofocus>

@@ -13,11 +13,11 @@ function deletePessoa(id, nome) {
         text: `Você está prestes a excluir a pessoa ${nome}.`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Sim, excluir',
+        confirmButtonText: 'Sim',
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`/pessoas/${id}`)
+            axios.delete(`/pessoa/${id}`)
                 .then(() => {
                     Swal.fire(
                         'Excluído!',
