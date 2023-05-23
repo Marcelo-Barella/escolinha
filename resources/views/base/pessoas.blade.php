@@ -26,7 +26,6 @@
                                     <th scope="col">Endereço</th>
                                     <th scope="col">Gênero</th>
                                     <th scope="col">Telefone</th>
-                                    <th scope="col">Contato</th>
                                     <th scope="col">Grupo</th>
                                 </tr>
                             </thead>
@@ -39,7 +38,6 @@
                                     <td>{{ $pessoa->endereco }}</td>
                                     <td>{{ $pessoa->sexo }}</td>
                                     <td>{{ $pessoa->telefone }}</td>
-                                    <td>{{ $pessoa->contato }}</td>
                                     <td>{{ $pessoa->grupo }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updatePessoaModal{{ $pessoa->id }}">
@@ -63,11 +61,11 @@
                                                     @method('PUT')
                                                     <div class="form-group">
                                                         <label for="name">CPF:</label>
-                                                        <input type="text" class="form-control" name="name" value="{{ $pessoa->cpf }}" required autofocus>
+                                                        <input type="number" class="form-control" name="cpf" value="{{ $pessoa->cpf }}" required autofocus>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="name">Nome:</label>
-                                                        <input type="text" class="form-control" name="name" value="{{ $pessoa->nome }}" required autofocus>
+                                                        <input type="text" class="form-control" name="nome" value="{{ $pessoa->nome }}" required autofocus>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="endereco">Endereço:</label>
@@ -75,7 +73,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="telefone">Telefone:</label>
-                                                        <input type="text" class="form-control" name="telefone" value="{{ $pessoa->telefone }}" required>
+                                                        <input type="text" class="form-control" name="telefone" value="{{ $pessoa->telefone }}">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -105,11 +103,11 @@
                                                     @csrf
                                                     @method('POST')
                                                     <div class="form-group">
-                                                        <label for="name">CPF:</label>
+                                                        <label for="cpf">CPF:</label>
                                                         <input type="number" class="form-control" name="cpf" value="" required autofocus>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="name">Nome:</label>
+                                                        <label for="nome">Nome:</label>
                                                         <input type="text" class="form-control" name="nome" value="" autofocus>
                                                     </div>
                                                     <div class="form-group">
@@ -121,16 +119,16 @@
                                                         <input type="text" class="form-control" name="telefone" value="" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="contato">Contato:</label>
-                                                        <input type="text" class="form-control" name="contato" value="" required>
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label for="grupo">Grupo:</label>
-                                                        <input type="text" class="form-control" name="grupo" value="" required>
+                                                        <br>
+                                                        <input type="radio" name="grupo" id="grupo_aluno" value="A"> Aluno
+                                                        <input type="radio" name="grupo" id="grupo_prof" value="P"> Professor
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="genero">Gênero:</label>
-                                                        <input type="text" class="form-control" name="genero" value="" required>
+                                                        <label for="sexo">Gênero:</label>
+                                                        <br>
+                                                        <input type="radio" name="sexo" id="gen_masc" value="M"> Masculino
+                                                        <input type="radio" name="sexo" id="gen_femin" value="F"> Feminino
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

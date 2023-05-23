@@ -48,7 +48,7 @@ class PessoasController extends Controller
 
         $pessoa = new Pessoas;
         $pessoa->updatePessoa(
-            $id, $request->nome, $request->$telefone, $request->endereco, $request->sexo, $request->grupo);
+            $id,$request->cpf, $request->nome, $request->telefone, $request->endereco);
         return redirect('/pessoas');
         
         // SEM MODEL
@@ -81,17 +81,19 @@ class PessoasController extends Controller
     }
 
     public function inserir_pessoa(Request $request){
-        $validar = $request->validate([
-            'cpf' => 'required',
-            'telefone' => 'required',
-            'endereco' => 'required',
-            'nome' => 'required',
-            'sexo' => 'required',
-            'grupo' => 'required'
-        ]);
-        Pessoas::create($validar);
-        
+        Pessoas::create([
 
-        return redirect('/pessoas');
+            'cpf' => $request->cpf,
+            'nome' => $request->nome,
+            'telefone' => $request->telefone,
+            'endereco' => $request->endereco,
+            'sexo' => $request->sexo,
+            'grupo' => $request->grupo,
+
+        ]);
+
+        return redirect('/pessoas');        
+
+        // return redirect('/pessoas');
     }
 }
