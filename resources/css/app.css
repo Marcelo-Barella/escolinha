@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    width: 250px;
+    height: 100vh;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-item {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-item:hover {
+    background-color: #ccc;
+  }
+  
+  .icon {
+    margin-right: 10px;
+  }
+  
+  .subcolumns {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+  }
+  
+  .nav-item.active .subcolumns {
+    display: flex;
+  }
+  
+  .subcolumn-item {
+    padding: 5px;
+  }

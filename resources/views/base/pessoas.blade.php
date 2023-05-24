@@ -43,7 +43,7 @@
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updatePessoaModal{{ $pessoa->id }}">
                                             Editar
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePessoa({{ $pessoa->id }}, {{ $pessoa->nome }})">Excluir</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePessoa({{ $pessoa->id }}, '{{ $pessoa->nome }}')">Excluir</button>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="updatePessoaModal{{ $pessoa->id }}" tabindex="-1" role="dialog" aria-labelledby="updatePessoaModalLabel{{ $pessoa->id }}" aria-hidden="true">

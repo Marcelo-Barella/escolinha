@@ -25,6 +25,7 @@ class PessoasController extends Controller
 
     public function deletar_pessoa($id)
     {
+        print_r('Chegou');
         // DESCRIÇÃO: Busca o ID do usuário para realizar a exclusão do registro
         // Quando encontrado, exclui o registro no banco de dados.
         $pessoa = Pessoas::find($id);

@@ -17,7 +17,7 @@ function deletePessoa(id, nome) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`/pessoa/${id}`)
+            axios.delete(`/pessoas/${id}`)
                 .then(() => {
                     Swal.fire(
                         'Excluído!',
@@ -37,3 +37,7 @@ function deletePessoa(id, nome) {
         }
     });
 }
+
+// function orderBy (order) {
+
+// }

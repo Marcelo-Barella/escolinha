@@ -9,7 +9,8 @@ class Pessoas extends Model
 {
     protected $table = 'pessoas';
     protected $fillable = 
-    ['cpf',
+    ['id',
+    'cpf',
     'nome',
     'telefone',
     'endereco',
