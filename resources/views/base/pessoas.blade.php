@@ -3,11 +3,13 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Lista de Pessoas') }}
-                <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#insertPessoaModal">
-                    Inserir
+                <div class="card-header col-md-12">{{ __('Lista de Pessoas') }}
+                    <div class="float-right col-md-2">
+                <button style="border:none" type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#insertPessoaModal">
+                <i class="fa fa-plus" aria-hidden="true"></i> Cadastrar
+                </div>
                 </div>
 
                 <div class="card-body">
@@ -27,6 +29,7 @@
                                     <th scope="col">Gênero</th>
                                     <th scope="col">Telefone</th>
                                     <th scope="col">Grupo</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>                            
@@ -40,17 +43,20 @@
                                     <td>{{ $pessoa->telefone }}</td>
                                     <td>{{ $pessoa->grupo }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updatePessoaModal{{ $pessoa->id }}">
-                                            Editar
+                                        <button style="border:none" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#updatePessoaModal{{ $pessoa->id }}">
+                                        <i class="fa fa-pencil" aria-hidden="true" style="font-size: 15px;"></i>
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePessoa({{ $pessoa->id }}, '{{ $pessoa->nome }}')">Excluir</button>
+                                        <button style="border:none" type="button" class="btn btn-outline-danger" onclick="deletePessoa({{ $pessoa->id }}, '{{ $pessoa->nome }}')">
+                                        <i class="fa fa-trash" aria-hidden="true" style="font-size: 15px"></i>
+
+                                    </button>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="updatePessoaModal{{ $pessoa->id }}" tabindex="-1" role="dialog" aria-labelledby="updatePessoaModalLabel{{ $pessoa->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="updatePessoaModalLabel{{ $pessoa->id }}">Atualizar Usuário</h5>
+                                                <h5 class="modal-title" id="updatePessoaModalLabel{{ $pessoa->id }}">Atualizar Pessoa</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -151,4 +157,5 @@
 @section('scripts')
     {{-- A função asset() é uma função do Laravel que gera uma URL completa para um arquivo localizado em sua pasta public --}}
     <script src="{{ asset('js/pessoas.js') }}"></script>
+    <link href="{{ asset('css\crud.css') }}" rel="stylesheet">
 @endsection
